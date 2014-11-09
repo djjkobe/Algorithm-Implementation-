@@ -1,6 +1,5 @@
 Developer name: Jiajie Dang
 email: djjkobe@gmail.com
-
 ==========================
 Designed a graphical version of the popular board game Boggle using Java.
 <<Selected de la briandais tree to store the information of each word in each position.
