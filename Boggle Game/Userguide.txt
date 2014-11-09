@@ -1,0 +1,34 @@
+About Boggle 
+1.the algorithm I used to find the words on the board.
+(1）I go through every single letter in the board. for each letter:I call a method called search(int N,String[][] board,StringBuilder prefix, int i, int j,ArrayList<String>result) 
+(2) This method will check out if the current StringBuilder is a prefix of a word in the dictionary.
+	if it is not and it is also not a word in the dictionary, this method will stop nad return.
+			if it is a word in the dictionary, it will put this word in the arraylist will contains all the valid word in the board. Then return;
+	else it will go to every possible ways(not visited before) of the letter it currently working on and find out whether the new letter is a prefix of a word in the dictionary.
+		if it is, it will recursively repeating the eariler steps.
+		if it is not, it will backtracking to the earlier step and go to another possible way.
+  After going to every letter in the board, we will have a arraylist which contains all the valid words.
+
+
+2.Compare the two different implementation method.
+(1) The MyDictionary method
+This implementation method is not very efficient.Becasue when it search prefix, it simply go through every words in the arraylist and compare it with the word it is checking character by character. In this way, there will be tons of comparisons which takes lots of time.Assume we have S valid characters and there are n words in the dictionary, the comparison for one word will be 0(SN).
+
+(2) The DLB method
+This method use DLBnode and each node has a child node, a sibling node and a value. When we want to add words in this DLB tree, when first check if the word is already there, if not, we just follow the path and make new paths. when we want to search prefix, we just check if the path representing the word is exist.This methods is far more efficient than the first method.Because this method greatly reduce the memory and at the same time, it offer faster lookups. Assume we have S valid characters (or bit patterns) possible in our "alphabet" and our key contains K characters. Then in worst case we can have up to Θ(KS) character, which is better than first method. 
+
+
+
+We can see the difference between the two implementations by actually compare the timing.for data3.txt:
+if we use the Mydictionary method, the time is nearly one minute.
+but if we use the DLB method, the time is only one second.
+
+
+
+
+
+How to play the game.
+(1)First of all, the player will see a board on the screen.
+(2)The player should follow the instruction on the board and input the word that you think is the valid word in the dictionary, if you don't want to keep playing this board, you can input"E".then the screen will show all the valid word in the board and show the number of words you guessed correct and what are they and the percentage of the correct words according to your guess.After that, the game will change to another board. Always input "E"will lead you exit the game.
+(3)After you input the guess, the screen will tell you whether your guess is valid or not, or you made the guess before. If you made the guess before, this guess will not count. 
+(4)Then you can keep inputing the guess until you want to exit the game and input 'E'.
